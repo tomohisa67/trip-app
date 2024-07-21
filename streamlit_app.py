@@ -117,18 +117,18 @@ b4 = st.sidebar.number_input('諸経費', min_value=0, max_value=10000000, value
 b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value=300000, step=50000)
 
 a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
-a_vals = [a1, a2, a3, a4, a5, a6]
+a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
 st.write(df_a)
 
 b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
-b_vals = [b1, b2, b3, b4, b5]
+b_vals = [[b1, b2, b3, b4, b5]]
 df_b = pd.DataFrame(b_vals, columns=b_cols)
 st.write(df_b)
 
 # 総売上
 x = ['収益（売上 - 経費）']
-y = [total_sales_[-1] - sum(a_vals) - sum(b_vals)]
+y = [[total_sales_[-1] - sum(a_vals) - sum(b_vals)]]
 df_c = pd.DataFrame(y, columns=x)
 
 
