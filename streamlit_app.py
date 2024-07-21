@@ -90,7 +90,7 @@ df = pd.DataFrame(vals, columns=cols)
 st.write(df)
 
 df2 = pd.read_csv('data.csv')
-st.write(df)
+# st.write(df)
 
 # TMP = '2019'
 # df2['合計人数'] = df2.sum(axis=1)
@@ -130,6 +130,7 @@ st.write(df_b)
 x = ['収益（売上 - 経費）']
 y = [[total_sales_[-1] - sum(a_vals[0]) - sum(b_vals[0])]]
 df_c = pd.DataFrame(y, columns=x)
+st.write(df_c)
 
 
 fig, ax = plt.subplots()
