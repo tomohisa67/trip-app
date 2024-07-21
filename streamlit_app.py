@@ -110,7 +110,7 @@ st.sidebar.subheader("固定費")
 # a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
 a1_1 = st.sidebar.number_input('人件費（一人当たり）', min_value=0, max_value=10000000, value=300000, step=500000)
 a1_2 = st.sidebar.number_input('人数', min_value=0, max_value=1000000, value=20, step=1)
-a1 = a1_1 * a1_2
+a1 = a1_1 * a1_2 * (len(days) // 30)
 a2 = st.sidebar.number_input('保険料', min_value=0, max_value=10000000, value=600000, step=100000)
 a3 = st.sidebar.number_input('メンテナンス費用', min_value=0, max_value=10000000, value=800000, step=100000)
 a4 = st.sidebar.number_input('マーケティング費用', min_value=0, max_value=10000000, value=500000, step=100000)
