@@ -84,8 +84,8 @@ total_sales_ = np.cumsum(total_sales)
 st.title("年間収益シミュレーション")
 st.write("宿泊施設の年間収益シミュレーション")
 
-cols = ['宿泊した人数', '一人当たりの平均単価', '売上', '売上（オンライン）', '売上（店舗）']
-vals = [[num_people, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
+cols = ['宿泊した人数', '宿泊した組数', '一人当たりの平均単価', '売上', '売上（オンライン）', '売上（店舗）']
+vals = [[num_people, num_people /4, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
 df = pd.DataFrame(vals, columns=cols)
 st.write(df)
 
