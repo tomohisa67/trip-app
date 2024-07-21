@@ -107,7 +107,10 @@ df3 = pd.read_csv('data2.csv')
 # st.write(df3)
 
 st.sidebar.subheader("固定費")
-a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
+# a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
+a1_1 = st.sidebar.number_input('人件費（一人当たり）', min_value=0, max_value=100000000, value=17500000, step=500000)
+a1_2 = st.sidebar.number_input('人数', min_value=0, max_value=1000000, value=100, step=1)
+a1 = a1_1 * a1_2
 a2 = st.sidebar.number_input('保険料', min_value=0, max_value=10000000, value=600000, step=100000)
 a3 = st.sidebar.number_input('メンテナンス費用', min_value=0, max_value=10000000, value=800000, step=100000)
 a4 = st.sidebar.number_input('マーケティング費用', min_value=0, max_value=10000000, value=500000, step=100000)
@@ -125,9 +128,13 @@ a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティ
 a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
 
+
 df_a_1 = df_a[['人件費', '保険料', 'メンテナンス費用']].copy()
 df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
 st.write("固定費")
+st.write(f"一人当たりの人件費: {a1_1} 円")
+st.write(f"人数: {a1_2} 人")
+st.write(f"{len(days) // 30}か月分の人件費: {a1} 円")
 st.write(df_a_1)
 st.write(df_a_2)
 
@@ -139,7 +146,8 @@ st.write(df_b)
 
 # 総売上
 x = ['売上高', '販管費', '営業利益（売上高 - 販管費）']
-y = [[total_sales_[-1], sum(a_vals[0]) + sum(b_vals[0]), total_sales_[-1] - sum(a_vals[0]) - sum(b_vals[0])]]
+hankanhi = (sum(a_vals[0]) + sum(b_vals[0])) * (year_max - year_min + 1)
+y = [[total_sales_[-1], hankanhi, total_sales_[-1] - hankanhi]]
 df_c = pd.DataFrame(y, columns=x)
 st.write("営業利益")
 st.write(df_c)
