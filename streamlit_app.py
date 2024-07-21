@@ -99,7 +99,7 @@ st.write(df)
 # countries = df2.columns
 
 df3 = pd.read_csv('data2.csv')
-st.write(df3)
+# st.write(df3)
 
 st.sidebar.subheader("固定費")
 a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
