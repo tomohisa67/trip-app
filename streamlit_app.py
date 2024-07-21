@@ -128,7 +128,7 @@ st.write(df_b)
 
 # 総売上
 x = ['収益（売上 - 経費）']
-y = [[total_sales_[-1] - sum(a_vals) - sum(b_vals)]]
+y = [[total_sales_[-1] - sum(a_vals[0]) - sum(b_vals[0])]]
 df_c = pd.DataFrame(y, columns=x)
 
 
