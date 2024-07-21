@@ -8,12 +8,7 @@ import matplotlib.font_manager as fm
 font_path = '/Users/tabuchitomohisa/Desktop/ryokou/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf'
 font_prop = fm.FontProperties(fname=font_path, weight='bold')
 
-# Matplotlibのデフォルトフォントに設定
-plt.rcParams['font.family'] = font_prop.get_name()
-
 from utils import check_season
-
-sns.set(style="whitegrid")
 
 # ---- サイドバー ---- #
 # year = st.sidebar.selectbox('売上を計算する年を選択', ['2018', '2019', '2020', '2021', '2022', '2023'])
