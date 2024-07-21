@@ -120,8 +120,12 @@ b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value
 a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
 a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
+
+df_a_1 = df_a[['人件費', '保険料', 'メンテナンス費用']].copy()
+df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
 st.write("固定費")
-st.write(df_a)
+st.write(df_a_1)
+st.write(df_a_2)
 
 b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
 b_vals = [[b1, b2, b3, b4, b5]]
