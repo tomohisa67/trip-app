@@ -140,16 +140,15 @@ df_a = pd.DataFrame(a_vals, columns=a_cols)
 
 df_a_1 = df_a[['人件費', '保険料', 'メンテナンス費用']].copy()
 df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
-st.write("固定費")
+st.write(f"固定費（{str(len(days) // 30)}か月分）")
 st.write(f"一人当たりの人件費: {a1_1} 円、人数: {a1_2} 人")
-st.write(f"{str(len(days) // 30)}か月分")
 st.write(df_a_1)
 st.write(df_a_2)
 
 b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
 b_vals = [[b1, b2, b3, b4, b5]]
 df_b = pd.DataFrame(b_vals, columns=b_cols)
-st.write("変動費")
+st.write(f"変動費（{str(len(days) // 30)}か月分）")
 st.write(f"{str(len(days) // 30)}か月分")
 st.write(df_b)
 
