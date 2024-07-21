@@ -16,12 +16,12 @@ year_min, year_max = st.sidebar.slider('売上を計算する範囲を選択', 2
 # y_min, y_max = st.sidebar.slider('yの範囲', 0, 100000000, (0, 10000000))
 
 st.sidebar.title("パラメータの設定")
-st.sidebar.subheader("獲得顧客について")
-rate1 = st.sidebar.number_input('全体の内、対象とする顧客の割合 (%)', min_value=0, max_value=100, value=20, step=1)
-rate2 = st.sidebar.number_input('全体の内、対象とする顧客の割合 (%)', min_value=0, max_value=100, value=25, step=1)
-rate1 = rate1 / 100
-rate2 = rate2 / 100
-final_rate = rate1 * rate2
+# st.sidebar.subheader("獲得顧客について")
+# rate1 = st.sidebar.number_input('全体の内、対象とする顧客の割合 (%)', min_value=0, max_value=100, value=20, step=1)
+# rate2 = st.sidebar.number_input('全体の内、対象とする顧客の割合 (%)', min_value=0, max_value=100, value=25, step=1)
+# rate1 = rate1 / 100
+# rate2 = rate2 / 100
+# final_rate = rate1 * rate2
 
 rate3 = st.sidebar.number_input('オンライン (%)', min_value=0, max_value=100, value=60, step=1)
 rate4 = st.sidebar.number_input('店舗 (%)', min_value=0, max_value=100, value=40, step=1)
