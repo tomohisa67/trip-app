@@ -92,7 +92,6 @@ df = pd.DataFrame(vals, columns=cols)
 # df_2 = df['売上', '売上（オンライン）', '売上（店舗）'].copy()
 # st.write(df_1)
 # st.write(df_2)
-df = df.reset_index(drop=True)
 st.write(df)
 
 df2 = pd.read_csv('data.csv')
