@@ -82,7 +82,7 @@ total_sales_ = np.cumsum(total_sales)
 # ---- メインページ ---- #
 # タイトルと説明の追加
 st.title("年間売上変動の可視化")
-st.write("このアプリは宿泊施設の年間売上変動を可視化します。")
+st.write("宿泊施設の年間収益シミュレーション")
 
 cols = ['宿泊した人数', '一人当たりの平均単価', '売上', '売上（オンライン）', '売上（店舗）']
 vals = [[num_people, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
@@ -119,11 +119,13 @@ b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value
 a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
 a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
+st.write("固定費")
 st.write(df_a)
 
 b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
 b_vals = [[b1, b2, b3, b4, b5]]
 df_b = pd.DataFrame(b_vals, columns=b_cols)
+st.write("変動費")
 st.write(df_b)
 
 # 総売上
