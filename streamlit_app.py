@@ -88,7 +88,11 @@ num_people_per_family = num_adult + num_child
 cols = ['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '平均単価（/1人）', '売上', '売上（オンライン）', '売上（店舗）']
 vals = [[num_people, num_people / num_people_per_family, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
 df = pd.DataFrame(vals, columns=cols)
-st.write(df)
+df_1 = df[['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '一人当たりの平均単価']].copy()
+df_2 = df[['売上', '売上（オンライン）', '売上（店舗）']].copy()
+
+st.write(df_1)
+st.write(df_2)
 
 df2 = pd.read_csv('data.csv')
 # st.write(df)
