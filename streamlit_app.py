@@ -106,33 +106,43 @@ df2 = pd.read_csv('data.csv')
 df3 = pd.read_csv('data2.csv')
 # st.write(df3)
 
-st.sidebar.subheader("固定費")
+st.sidebar.subheader("一か月あたりの固定費")
 # a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
 a1_1 = st.sidebar.number_input('人件費（一人当たり）', min_value=0, max_value=10000000, value=300000, step=500000)
 a1_2 = st.sidebar.number_input('人数', min_value=0, max_value=1000000, value=20, step=1)
 a1 = a1_1 * a1_2 * (len(days) // 30)
 a2 = st.sidebar.number_input('保険料', min_value=0, max_value=10000000, value=600000, step=100000)
+a2 = a2 * (len(days) // 30)
 a3 = st.sidebar.number_input('メンテナンス費用', min_value=0, max_value=10000000, value=800000, step=100000)
+a3 = a3 * (len(days) // 30)
 a4 = st.sidebar.number_input('マーケティング費用', min_value=0, max_value=10000000, value=500000, step=100000)
+a4 = a4 * (len(days) // 30)
 a5 = st.sidebar.number_input('セキュリティ費用', min_value=0, max_value=10000000, value=1200000, step=100000)
+a5 = a5 * (len(days) // 30)
 a6 = st.sidebar.number_input('広告宣伝費', min_value=0, max_value=10000000, value=2400000, step=100000)
+a6 = a6 * (len(days) // 30)
 
-st.sidebar.subheader("変動費")
+st.sidebar.subheader("一か月あたりの変動費")
 b1 = st.sidebar.number_input('清掃費', min_value=0, max_value=1000000, value=300000, step=50000)
+b1 = b1 * (len(days) // 30)
 b2 = st.sidebar.number_input('光熱費', min_value=0, max_value=1000000, value=200000, step=50000)
+b2 = b2 * (len(days) // 30)
 b3 = st.sidebar.number_input('消耗品費', min_value=0, max_value=1000000, value=100000, step=10000)
+b3 = b3 * (len(days) // 30)
 b4 = st.sidebar.number_input('諸経費', min_value=0, max_value=10000000, value=500000, step=100000)
+b4 = b4 * (len(days) // 30)
 b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value=300000, step=50000)
+b5 = b5 * (len(days) // 30)
 
-a_cols = ['人件費(' + str(len(days) // 30) + 'か月分)', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
+a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
 a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
 
-
-df_a_1 = df_a[['人件費(' + str(len(days) // 30) + 'か月分)', '保険料', 'メンテナンス費用']].copy()
+df_a_1 = df_a[['人件費', '保険料', 'メンテナンス費用']].copy()
 df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
 st.write("固定費")
 st.write(f"一人当たりの人件費: {a1_1} 円、人数: {a1_2} 人")
+st.write(f"{str(len(days) // 30)}か月分")
 st.write(df_a_1)
 st.write(df_a_2)
 
@@ -140,6 +150,7 @@ b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
 b_vals = [[b1, b2, b3, b4, b5]]
 df_b = pd.DataFrame(b_vals, columns=b_cols)
 st.write("変動費")
+st.write(f"{str(len(days) // 30)}か月分")
 st.write(df_b)
 
 # 総売上
