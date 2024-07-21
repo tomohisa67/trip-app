@@ -87,7 +87,7 @@ st.write("宿泊施設の年間収益シミュレーション")
 num_people_per_family = num_adult + num_child
 cols = ['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '一人当たりの平均単価', '売上', '売上（オンライン）', '売上（店舗）']
 vals = [[num_people, num_people / num_people_per_family, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
-df = pd.DataFrame(vals, columns=cols, index=False)
+df = pd.DataFrame(vals, columns=cols)
 # df_1 = df['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '一人当たりの平均単価'].copy()
 # df_2 = df['売上', '売上（オンライン）', '売上（店舗）'].copy()
 # st.write(df_1)
@@ -123,7 +123,7 @@ b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value
 
 a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
 a_vals = [[a1, a2, a3, a4, a5, a6]]
-df_a = pd.DataFrame(a_vals, columns=a_cols, index=False)
+df_a = pd.DataFrame(a_vals, columns=a_cols)
 
 df_a_1 = df_a[['人件費', '保険料', 'メンテナンス費用']].copy()
 df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
@@ -133,14 +133,14 @@ st.write(df_a_2)
 
 b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
 b_vals = [[b1, b2, b3, b4, b5]]
-df_b = pd.DataFrame(b_vals, columns=b_cols, index=False)
+df_b = pd.DataFrame(b_vals, columns=b_cols)
 st.write("変動費")
 st.write(df_b)
 
 # 総売上
 x = ['営業利益（売上高 - 販管費）']
 y = [[total_sales_[-1] - sum(a_vals[0]) - sum(b_vals[0])]]
-df_c = pd.DataFrame(y, columns=x, index=False)
+df_c = pd.DataFrame(y, columns=x)
 st.write(df_c)
 
 
