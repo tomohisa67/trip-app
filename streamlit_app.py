@@ -85,8 +85,8 @@ st.title("年間収益シミュレーション")
 st.write("宿泊施設の年間収益シミュレーション")
 
 num_people_per_family = num_adult + num_child
-cols = ['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '平均単価（/人）', '売上', '売上（オンライン）', '売上（店舗）']
-vals = [[num_people, num_people / num_people_per_family, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
+cols = ['宿泊人数', '平均単価', '宿泊組数（1組' + str(num_people_per_family) + '人）', '売上', '売上（オンライン）', '売上（店舗）']
+vals = [[num_people, total_sales_[-1] // num_people, num_people / num_people_per_family, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
 df = pd.DataFrame(vals, columns=cols)
 # df_1 = df['宿泊人数', '宿泊組数（1組' + str(num_people_per_family) + '人）', '一人当たりの平均単価'].copy()
 # df_2 = df['売上', '売上（オンライン）', '売上（店舗）'].copy()
