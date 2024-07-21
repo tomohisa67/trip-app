@@ -129,7 +129,7 @@ a_vals = [[a1, a2, a3, a4, a5, a6]]
 df_a = pd.DataFrame(a_vals, columns=a_cols)
 
 
-df_a_1 = df_a[['人件費(' + str(len(days) // 30) + ')', '保険料', 'メンテナンス費用']].copy()
+df_a_1 = df_a[['人件費(' + str(len(days) // 30) + 'か月分)', '保険料', 'メンテナンス費用']].copy()
 df_a_2 = df_a[['マーケティング費用', 'セキュリティ費用', '広告宣伝費']].copy()
 st.write("固定費")
 st.write(f"一人当たりの人件費: {a1_1} 円、人数: {a1_2} 人")
