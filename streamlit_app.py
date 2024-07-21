@@ -2,11 +2,11 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
+# import matplotlib.font_manager as fm
 
-# 日本語フォントのパスを指定
-font_path = '/Users/tabuchitomohisa/Desktop/ryokou/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf'
-font_prop = fm.FontProperties(fname=font_path, weight='bold')
+# # 日本語フォントのパスを指定
+# font_path = '/Users/tabuchitomohisa/Desktop/ryokou/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf'
+# font_prop = fm.FontProperties(fname=font_path, weight='bold')
 
 from utils import check_season
 
@@ -88,6 +88,49 @@ cols = ['宿泊した人数', '一人当たりの平均単価', '売上', '売�
 vals = [[num_people, total_sales_[-1] // num_people, total_sales_[-1], total_sales_[-1] * rate3, total_sales_[-1] * rate4]]
 df = pd.DataFrame(vals, columns=cols)
 st.write(df)
+
+df2 = pd.read_csv('data.csv')
+st.write(df)
+
+# TMP = '2019'
+# df2['合計人数'] = df2.sum(axis=1)
+# total_num = df2.loc[df2['年'] == 2019, '合計人数'].values[0]
+
+# countries = df2.columns
+
+df3 = pd.read_csv('data2.csv')
+st.write(df3)
+
+st.sidebar.subheader("固定費")
+a1 = st.sidebar.number_input('人件費', min_value=0, max_value=100000000, value=17500000, step=500000)
+a2 = st.sidebar.number_input('保険料', min_value=0, max_value=10000000, value=600000, step=100000)
+a3 = st.sidebar.number_input('メンテナンス費用', min_value=0, max_value=10000000, value=800000, step=100000)
+a4 = st.sidebar.number_input('マーケティング費用', min_value=0, max_value=10000000, value=500000, step=100000)
+a5 = st.sidebar.number_input('セキュリティ費用', min_value=0, max_value=10000000, value=1200000, step=100000)
+a6 = st.sidebar.number_input('広告宣伝費', min_value=0, max_value=10000000, value=2400000, step=100000)
+
+st.sidebar.subheader("変動費")
+b1 = st.sidebar.number_input('清掃費', min_value=0, max_value=1000000, value=300000, step=50000)
+b2 = st.sidebar.number_input('光熱費', min_value=0, max_value=1000000, value=200000, step=50000)
+b3 = st.sidebar.number_input('消耗品費', min_value=0, max_value=1000000, value=100000, step=10000)
+b4 = st.sidebar.number_input('諸経費', min_value=0, max_value=10000000, value=500000, step=100000)
+b5 = st.sidebar.number_input('交通費', min_value=0, max_value=10000000, value=300000, step=50000)
+
+a_cols = ['人件費', '保険料', 'メンテナンス費用', 'マーケティング費用', 'セキュリティ費用', '広告宣伝費']
+a_vals = [a1, a2, a3, a4, a5, a6]
+df_a = pd.DataFrame(a_vals, columns=a_cols)
+st.write(df_a)
+
+b_cols = ['清掃費', '光熱費', '消耗品費', '諸経費', '交通費']
+b_vals = [b1, b2, b3, b4, b5]
+df_b = pd.DataFrame(b_vals, columns=b_cols)
+st.write(df_b)
+
+# 総売上
+x = ['収益（売上 - 経費）']
+y = [total_sales_[-1] - sum(a_vals) - sum(b_vals)]
+df_c = pd.DataFrame(y, columns=x)
+
 
 fig, ax = plt.subplots()
 ax.plot(days, total_sales_, linestyle='-')
